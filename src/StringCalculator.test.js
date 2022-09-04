@@ -37,4 +37,13 @@ describe("String Calculator", () => {
       expect(StringCalculator.add("4,2,a,b,c,d")).toBe(16);
     });
   });
+
+  describe("String Calculator Task 4", () => {
+    it("throws an error when any argument is negative number in add() method", () => {
+      expect(() => StringCalculator.add("2,5,-6")).toThrow(Error);
+      expect(() => StringCalculator.add("12,3,-5")).toThrow(
+        new Error(`Negatives not allowed: (-5)`)
+      );
+    });
+  });
 });
