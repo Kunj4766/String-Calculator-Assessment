@@ -11,7 +11,15 @@ const getAllNegativeNumbersFromText = (text) => {
 };
 
 const getArrayOfNumbersFromString = (stringOfNumbers) => {
-  const commaSeperatedString = stringOfNumbers.replaceAll("\n", ",");
+  let modifiedString = stringOfNumbers;
+  if (stringOfNumbers.startsWith("//")) {
+    const indexOfNewLIne = modifiedString.indexOf("\n");
+    const delimiter = stringOfNumbers.slice(2, indexOfNewLIne);
+    modifiedString = modifiedString
+      .slice(indexOfNewLIne)
+      .replaceAll(`${delimiter}`, ",");
+  }
+  const commaSeperatedString = modifiedString.replaceAll("\n", ",");
   const arrayOfNumbers = commaSeperatedString.split(",");
   return arrayOfNumbers;
 };

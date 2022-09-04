@@ -69,4 +69,10 @@ describe("String Calculator", () => {
       expect(this.add("4,2\n3,b,3\na")).toBe(4 + 2 + 3 + 2 + 3 + 1);
     });
   });
+
+  describe("String Calculator Task 8", () => {
+    it("Support different delimiters in add() method", () => {
+      expect(this.add("//;\n1;2;a;5")).toBe(1 + 2 + 1 + 5);
+    });
+  });
 });
