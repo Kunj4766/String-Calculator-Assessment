@@ -63,4 +63,10 @@ describe("String Calculator", () => {
       );
     });
   });
+
+  describe("String Calculator Task 7", () => {
+    it("Allow the add method to handle new lines between numbers in add() method", () => {
+      expect(this.add("4,2\n3,b,3\na")).toBe(4 + 2 + 3 + 2 + 3 + 1);
+    });
+  });
 });

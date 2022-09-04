@@ -4,7 +4,7 @@ const {
   NEGATIVE_NUMBER_EXCEPTION_MSG,
 } = require("./constants/app-default");
 
-const { customException, getAllNegativeNumbersFromText } = require("./helpers");
+const { customException, getAllNegativeNumbersFromText, getArrayOfNumbersFromString } = require("./helpers");
 
 class StringCalculator {
   constructor() {};
@@ -13,7 +13,7 @@ class StringCalculator {
     let sumOfAllNumbers = 0;
     try {
       if (!!stringOfNumbers) {
-        const arrayOfNumbers = stringOfNumbers.split(",");
+        const arrayOfNumbers = getArrayOfNumbersFromString(stringOfNumbers);
 
         sumOfAllNumbers = arrayOfNumbers.reduce((total, currValue) => {
           let currNumber = Number(currValue);
@@ -21,8 +21,11 @@ class StringCalculator {
 
           /* If there any negative number it will give an exeption */
           if (currNumber < 0) {
-            const negativeNumbers =  getAllNegativeNumbersFromText(stringOfNumbers)
-            throw customException(`${NEGATIVE_NUMBER_EXCEPTION_MSG} (${negativeNumbers})`);
+            const negativeNumbers =
+              getAllNegativeNumbersFromText(stringOfNumbers);
+            throw customException(
+              `${NEGATIVE_NUMBER_EXCEPTION_MSG} (${negativeNumbers})`
+            );
           }
 
           /* check if currValue is lowerCase alphabet or number */
@@ -31,10 +34,10 @@ class StringCalculator {
             currCharCode <= ASCII_CODE_OF_LOWERCASE_Z
           ) {
             currNumber = currCharCode - (ASCII_CODE_OF_LOWERCASE_A - 1);
-          };
+          }
 
           /* If the currValue is greter than 1000 it will be ignored */
-          if(currNumber > 1000) {
+          if (currNumber > 1000) {
             currNumber = 0;
           }
 

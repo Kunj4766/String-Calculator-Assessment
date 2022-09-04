@@ -10,7 +10,14 @@ const getAllNegativeNumbersFromText = (text) => {
   return arrayOfNegativeNumbers.join(",");
 };
 
+const getArrayOfNumbersFromString = (stringOfNumbers) => {
+  const commaSeperatedString = stringOfNumbers.replaceAll("\n", ",");
+  const arrayOfNumbers = commaSeperatedString.split(",");
+  return arrayOfNumbers;
+};
+
 module.exports = {
   customException,
   getAllNegativeNumbersFromText,
+  getArrayOfNumbersFromString,
 };
