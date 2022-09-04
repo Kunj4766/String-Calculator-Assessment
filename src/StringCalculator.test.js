@@ -75,4 +75,14 @@ describe("String Calculator", () => {
       expect(this.add("//;\n1;2;a;5")).toBe(1 + 2 + 1 + 5);
     });
   });
+
+  describe("String Calculator Task 9", () => {
+    it("Support odd addition in add() method", () => {
+      expect(this.add("0//***\n1***2***8***5")).toBe(1 + 5);
+    });
+  
+    it("Support even addition in add() method", () => {
+      expect(this.add("1//***\n1***2***8***5")).toBe(2 + 8);
+    });
+  });
 });

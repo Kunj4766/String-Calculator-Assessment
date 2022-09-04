@@ -4,10 +4,14 @@ const {
   NEGATIVE_NUMBER_EXCEPTION_MSG,
 } = require("./constants/app-default");
 
-const { customException, getAllNegativeNumbersFromText, getArrayOfNumbersFromString } = require("./helpers");
+const {
+  customException,
+  getAllNegativeNumbersFromText,
+  getArrayOfNumbersFromString,
+} = require("./helpers");
 
 class StringCalculator {
-  constructor() {};
+  constructor() {}
 
   add(stringOfNumbers) {
     let sumOfAllNumbers = 0;
