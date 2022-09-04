@@ -1,15 +1,13 @@
 const {
   ASCII_CODE_OF_LOWERCASE_A,
   ASCII_CODE_OF_LOWERCASE_Z,
+  NEGATIVE_NUMBER_EXCEPTION_MSG,
 } = require("./constants/app-default");
+
+const { customException, getAllNegativeNumbersFromText } = require("./helpers");
 
 class StringCalculator {
   constructor() {};
-
-  customException(message) {
-    const error = new Error(message);
-    return error;
-  }
 
   add(stringOfNumbers) {
     let sumOfAllNumbers = 0;
@@ -23,7 +21,8 @@ class StringCalculator {
 
           /* If there any negative number it will give an exeption */
           if (currNumber < 0) {
-            throw this.customException(`Negatives not allowed: (${currNumber})`);
+            const negativeNumbers =  getAllNegativeNumbersFromText(stringOfNumbers)
+            throw customException(`${NEGATIVE_NUMBER_EXCEPTION_MSG} (${negativeNumbers})`);
           }
 
           /* check if currValue is lowerCase alphabet or number */

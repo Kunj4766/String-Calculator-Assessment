@@ -1,12 +1,12 @@
 const StringCalculator = require("./StringCalculator");
 
 describe("String Calculator", () => {
-  describe("String Calculator Task 1", () => {
-    beforeEach(() => {
-      const { add } = StringCalculator;
-      this.add = add;
-    });
+  beforeEach(() => {
+    const { add } = StringCalculator;
+    this.add = add;
+  });
 
+  describe("String Calculator Task 1", () => {
     it("add() with empty string should return 0", () => {
       expect(this.add("")).toBe(0);
     });
@@ -26,7 +26,7 @@ describe("String Calculator", () => {
 
   describe("String Calculator Task 2", () => {
     it("add() with unknown amount of number's string should return sum of all numbers", () => {
-      expect(StringCalculator.add("4,2,54,26,2,4,6,2,12")).toBe(
+      expect(this.add("4,2,54,26,2,4,6,2,12")).toBe(
         4 + 2 + 54 + 26 + 2 + 4 + 6 + 2 + 12
       );
     });
@@ -34,15 +34,24 @@ describe("String Calculator", () => {
 
   describe("String Calculator Task 3", () => {
     it("Allow alphabets to be included with numbers in add() method", () => {
-      expect(StringCalculator.add("4,2,a,b,c,d")).toBe(16);
+      expect(this.add("4,2,a,b,c,d")).toBe(16);
     });
   });
 
   describe("String Calculator Task 4", () => {
     it("throws an error when any argument is negative number in add() method", () => {
-      expect(() => StringCalculator.add("2,5,-6")).toThrow(Error);
-      expect(() => StringCalculator.add("12,3,-5")).toThrow(
+      expect(() => this.add("2,5,-6")).toThrow(Error);
+      expect(() => this.add("12,3,-5")).toThrow(
         new Error(`Negatives not allowed: (-5)`)
+      );
+    });
+  });
+
+  describe("String Calculator Task 5", () => {
+    it("If there are multiple negatives, show all of them in the exception message in add() method", () => {
+      expect(() => this.add("2,-5,-6")).toThrow(Error);
+      expect(() => this.add("-12,3,-5,1,-4")).toThrow(
+        new Error(`Negatives not allowed: (-12,-5,-4)`)
       );
     });
   });
