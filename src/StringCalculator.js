@@ -31,7 +31,13 @@ class StringCalculator {
             currCharCode <= ASCII_CODE_OF_LOWERCASE_Z
           ) {
             currNumber = currCharCode - (ASCII_CODE_OF_LOWERCASE_A - 1);
+          };
+
+          /* If the currValue is greter than 1000 it will be ignored */
+          if(currNumber > 1000) {
+            currNumber = 0;
           }
+
           return total + currNumber;
         }, 0);
       }

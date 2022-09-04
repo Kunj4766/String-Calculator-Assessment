@@ -55,4 +55,12 @@ describe("String Calculator", () => {
       );
     });
   });
+
+  describe("String Calculator Task 6", () => {
+    it("Numbers bigger than 1000 should be ignored in add() method", () => {
+      expect(this.add("4,2,54,1000,1001,2,12,a")).toBe(
+        4 + 2 + 54 + 1000 + 2 + 12 + 1
+      );
+    });
+  });
 });
