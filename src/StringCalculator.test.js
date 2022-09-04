@@ -31,4 +31,10 @@ describe("String Calculator", () => {
       );
     });
   });
+
+  describe("String Calculator Task 3", () => {
+    it("Allow alphabets to be included with numbers in add() method", () => {
+      expect(StringCalculator.add("4,2,a,b,c,d")).toBe(16);
+    });
+  });
 });
