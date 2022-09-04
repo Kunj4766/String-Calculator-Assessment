@@ -1,6 +1,7 @@
 const {
   REGEX_TO_MATCH_NEGATIVE_NUMBERS,
   DELIMITER_FILTER_TYPES,
+  INPUT_STRING_IDENTIFICATION_SYMBOLS,
 } = require("../constants/app-default");
 
 const {
@@ -10,9 +11,15 @@ const {
   NOT_HAS_DELIMITER_TEXT,
 } = DELIMITER_FILTER_TYPES;
 
+const {
+  SEPERATOR_SYMBOL,
+  EVEN_IDENTIFICATION_SYMBOL,
+  ODD_IDENTIFICATION_SYMBOL,
+} = INPUT_STRING_IDENTIFICATION_SYMBOLS;
+
 /**
- * 
- * @param {*} message 
+ *
+ * @param {*} message
  * @returns method is used to return custom Exception
  */
 const customException = (message) => {
@@ -21,8 +28,8 @@ const customException = (message) => {
 };
 
 /**
- * 
- * @param {*} text 
+ *
+ * @param {*} text
  * @returns method will return All Negative Numbers From the comma seperated string
  */
 const getAllNegativeNumbersFromText = (text) => {
@@ -31,13 +38,13 @@ const getAllNegativeNumbersFromText = (text) => {
 };
 
 /**
- * 
- * @param {*} inputString 
+ *
+ * @param {*} inputString
  * @returns: method returns comma seperated numbers of string type
  */
 const getModifiedStringFromDelimiterText = (inputString) => {
   const indexOfNewLIne = inputString.indexOf("\n");
-  const indexOfSeparate = inputString.indexOf("//");
+  const indexOfSeparate = inputString.indexOf(SEPERATOR_SYMBOL);
   const delimiter = inputString.slice(indexOfSeparate + 2, indexOfNewLIne);
   const modifiedString = inputString
     .slice(indexOfNewLIne)
@@ -46,16 +53,16 @@ const getModifiedStringFromDelimiterText = (inputString) => {
 };
 
 /**
- * 
- * @param {*} inputString 
+ *
+ * @param {*} inputString
  * @returns: method returns filterType from which we'll filter numbers array
  */
 const getDelimiterFilterType = (inputString) => {
-  if (inputString.startsWith("//")) {
+  if (inputString.startsWith(SEPERATOR_SYMBOL)) {
     return NO_FILTER;
-  } else if (inputString.startsWith("0//")) {
+  } else if (inputString.startsWith(ODD_IDENTIFICATION_SYMBOL)) {
     return FILTER_EVEN_NUMBERS;
-  } else if (inputString.startsWith("1//")) {
+  } else if (inputString.startsWith(EVEN_IDENTIFICATION_SYMBOL)) {
     return FILTER_ODD_NUMBERS;
   } else {
     return NOT_HAS_DELIMITER_TEXT;
@@ -63,9 +70,9 @@ const getDelimiterFilterType = (inputString) => {
 };
 
 /**
- * 
- * @param {*} filterType 
- * @param {*} array 
+ *
+ * @param {*} filterType
+ * @param {*} array
  * @returns: method returns filtered arrray as per the filtertype
  */
 const getFilteredArrayByFilterType = (filterType, array) => {
@@ -82,8 +89,8 @@ const getFilteredArrayByFilterType = (filterType, array) => {
 };
 
 /**
- * 
- * @param {*} stringOfNumbers 
+ *
+ * @param {*} stringOfNumbers
  * @returns: method returns array of numbers based on string input
  */
 const getArrayOfNumbersFromString = (stringOfNumbers) => {
